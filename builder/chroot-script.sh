@@ -110,7 +110,7 @@ echo 'deb http://archive.raspberrypi.org/debian/ buster main' | tee /etc/apt/sou
 
 # reload package sources
 apt-get update
-apt-get upgrade -y
+apt-get -o "Acquire::https::Verify-Peer=false" upgrade -y
 
 # install WiFi firmware packages (same as in Raspbian)
 apt-get install -y \
