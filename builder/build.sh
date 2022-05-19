@@ -97,6 +97,7 @@ du -sh ${BUILD_PATH}
 ls -alh /image_with_kernel_*.tar.gz
 
 # create the image and add root base filesystem
+export LIBGUESTFS_BACKEND_SETTINGS=force_tcg
 guestfish -a "${BUILD_RESULT_PATH}/${HYPRIOT_IMAGE_NAME}"<<_EOF_
   run
   #import filesystem content

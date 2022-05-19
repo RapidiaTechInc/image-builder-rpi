@@ -265,6 +265,18 @@ chmod +x usr/local/bin/rpi-serial-console
 # fix eth0 interface name
 ln -s /dev/null /etc/systemd/network/99-default.link
 
+# Install Samba
+echo "samba-common samba-common/workgroup string  WORKGROUP" | debconf-set-selections
+echo "samba-common samba-common/dhcp boolean true" | debconf-set-selections
+echo "samba-common samba-common/do_debconf boolean true" | debconf-set-selections
+apt-get install -y samba samba-common-bin
+
+# Install Node
+curl -sL https://deb.nodesource.com/setup_14.x | bash -
+apt-get install -y nodejs jq
+npm config set unsafe-perm true
+npm install -g typescript ts-node nodemon
+
 # cleanup APT cache and lists
 apt-get clean
 rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

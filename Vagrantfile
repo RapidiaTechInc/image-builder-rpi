@@ -10,12 +10,12 @@ Vagrant.configure(2) do |config|
 
   config.vm.provider "vmware_fusion" do |v|
     # Customize the amount of memory on the VM:
-    v.memory = "2048"
+    v.memory = "4096"
   end
 
   config.vm.provider "virtualbox" do |vb|
     # Customize the amount of memory on the VM:
-    vb.memory = "2048"
+    vb.memory = "4096"
     vb.cpus = 4
   end
 
